@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "data-algorithms-with-pyspark"
+version = "0.1.0"
+description = "Study examples from 'Data Algorithms with Spark' by Mahmoud Parsian - Python only"
+authors = ["Leandro Mana <leandromana@gmail.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pyspark = "^4.0.0"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.0"
+ipykernel = "^6.0"
+pytest = "^8.0"
+pytest-spark = "^0.6"
+ruff = "^0.4"
+mypy = "^1.0"
+pre-commit = "^4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = false  # Relaxed for study project
+ignore_missing_imports = true  # PySpark stubs may be incomplete
+exclude = ["tests/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
