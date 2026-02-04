@@ -5,7 +5,7 @@ This chapter demonstrates the classic MapReduce pattern using DNA sequence analy
 ## Examples
 
 | Example | Description | Shuffle Efficiency |
-|---------|-------------|-------------------|
+| --------- | ------------- | ------------------- |
 | `dna_base_count_ver_1.py` | Basic flatMap + reduceByKey | Low (1 pair per character) |
 | `dna_base_count_ver_2.py` | InMapper Combiner per record | Medium (1 pair per unique base per record) |
 | `dna_base_count_ver_3.py` | mapPartitions (partition-level) | High (1 pair per unique base per partition) |
@@ -124,7 +124,7 @@ foreach()).
 For a file with N characters across P partitions:
 
 | Version | Intermediate Pairs | Shuffle Volume |
-|---------|-------------------|----------------|
+| --------- | ------------------- | ------------------- |
 | Ver 1 | N pairs | O(N) |
 | Ver 2 | ~N/avg_record_length pairs | O(N/record_size) |
 | Ver 3 | ~6 * P pairs | O(P) |
