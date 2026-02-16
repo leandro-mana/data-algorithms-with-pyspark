@@ -1,11 +1,11 @@
-# Chapter 2: MapReduce Pattern - DNA Base Count
+# Chapter 2: MapReduce Pattern — DNA Base Count
 
-This chapter demonstrates the classic MapReduce pattern using DNA sequence analysis as an example. Three progressively optimized solutions are presented.
+This chapter demonstrates the classic MapReduce pattern using DNA sequence analysis as an example. Three progressively optimized solutions show how transformation choice impacts shuffle efficiency and performance.
 
 ## Examples
 
 | Example | Description | Shuffle Efficiency |
-| --------- | ------------- | ------------------- |
+| --- | --- | --- |
 | `dna_base_count_ver_1.py` | Basic flatMap + reduceByKey | Low (1 pair per character) |
 | `dna_base_count_ver_2.py` | InMapper Combiner per record | Medium (1 pair per unique base per record) |
 | `dna_base_count_ver_3.py` | mapPartitions (partition-level) | High (1 pair per unique base per partition) |
@@ -19,7 +19,7 @@ make run-spark CHAPTER=chapter_02 EXAMPLE=dna_base_count_ver_1
 # Run version 2 (InMapper Combiner per record)
 make run-spark CHAPTER=chapter_02 EXAMPLE=dna_base_count_ver_2
 
-# Run version 3 (mapPartitions - most efficient)
+# Run version 3 (mapPartitions — most efficient)
 make run-spark CHAPTER=chapter_02 EXAMPLE=dna_base_count_ver_3
 
 # Run with a custom FASTA file
@@ -42,22 +42,27 @@ GCTAGCTAGCTA
 
 ## Key Concepts
 
-- Why reduceByKey() over groupByKey() For a large set of (key, value) pairs, using `reduceByKey()` or `combineByKey()` is typically more efficient than using the combination of `groupByKey()` and `mapValues()`, because they reduce the shuffling time.
+### reduceByKey() vs groupByKey()
 
-    ```python
-    # These produce the same results:
-    rdd.groupByKey().mapValues(lambda values: sum(values))
-    rdd.reduceByKey(lambda x, y: x + y)
-    ```
+For a large set of (key, value) pairs, using `reduceByKey()` or `combineByKey()` is typically more efficient than using the combination of `groupByKey()` and `mapValues()`, because they reduce the shuffling time.
 
-    However, `groupByKey()` transfers the entire dataset across the network, while `reduceByKey()` computes local sums in each partition first and only shuffles the partial results. This makes `reduceByKey()` significantly faster for most use cases.
+```python
+# These produce the same results:
+rdd.groupByKey().mapValues(lambda values: sum(values))
+rdd.reduceByKey(lambda x, y: x + y)
+```
 
-- `map()` Versus `mapPartitions()` What are the main differences between Spark’s map() and mapPartitions() transformations? In a nutshell, map() is a 1-to-1 transformation: it maps each element of the source RDD into a single element of the target RDD. mapPartitions(), on the other hand, can be considered a many-to-1 transformation: it maps each partition (comprising many elements of the source RDD—each partition may have thousands or millions of elements) into a single element of the target RDD. The main advantage of this is that it means we can do initialization on a per-partition basis instead of per-element basis (as is done by map() and
-foreach()).
+However, `groupByKey()` transfers the entire dataset across the network, while `reduceByKey()` computes local sums in each partition first and only shuffles the partial results. This makes `reduceByKey()` significantly faster for most use cases.
 
-- **Summarization Design Pattern** Spark’s `mapPartitions()` transformation can be used to implement the summarization design pattern, which is useful when you’re working with big data and you want to get a summary view so you can glean insights that are not available from looking at a localized set of records alone. This design pattern involves grouping similar data together and then performing an operation such as calculating a statistic, building an index, or simply counting.
+### map() vs mapPartitions()
 
-- For example, if you want to find the minimum and maximum of all numbers in your input, using `map()` can be pretty inefficient, since you will be generating tons of intermediate (key, value) pairs but the bottom line is that you want to find just two numbers. It’s also useful if you want to find the top 10 (or bottom 10) values in your input. mapPartitions() does this efficiently: you find the top (or bottom) 10 per partition, then the top (or bottom) 10 for all partitions. This way, you avoid emitting too many intermediate (key, value) pairs.
+`map()` is a 1-to-1 transformation: it maps each element of the source RDD into a single element of the target RDD. `mapPartitions()`, on the other hand, can be considered a many-to-1 transformation: it maps each partition (comprising many elements — each partition may have thousands or millions of elements) into a single element of the target RDD. The main advantage of this is that it means we can do initialization on a per-partition basis instead of per-element basis (as is done by `map()` and `foreach()`).
+
+### Summarization Design Pattern
+
+Spark's `mapPartitions()` transformation can be used to implement the summarization design pattern, which is useful when you're working with big data and you want to get a summary view so you can glean insights that are not available from looking at a localized set of records alone. This design pattern involves grouping similar data together and then performing an operation such as calculating a statistic, building an index, or simply counting.
+
+For example, if you want to find the minimum and maximum of all numbers in your input, using `map()` can be pretty inefficient, since you will be generating tons of intermediate (key, value) pairs but the bottom line is that you want to find just two numbers. `mapPartitions()` does this efficiently: you find the top 10 (or bottom 10) per partition, then the top 10 (or bottom 10) for all partitions. This way, you avoid emitting too many intermediate (key, value) pairs.
 
 ## The Three Solutions Explained
 
@@ -124,11 +129,12 @@ foreach()).
 For a file with N characters across P partitions:
 
 | Version | Intermediate Pairs | Shuffle Volume |
-| --------- | ------------------- | ------------------- |
+| --- | --- | --- |
 | Ver 1 | N pairs | O(N) |
 | Ver 2 | ~N/avg_record_length pairs | O(N/record_size) |
 | Ver 3 | ~6 * P pairs | O(P) |
 
 ## Additional Resources
 
+- [Spark RDD Programming Guide](https://spark.apache.org/docs/latest/rdd-programming-guide.html)
 - Larger FASTA Datasets: [University of California, Santa Cruz](https://hgdownload.soe.ucsc.edu/downloads.html)

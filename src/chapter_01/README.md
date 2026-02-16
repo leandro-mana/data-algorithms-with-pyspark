@@ -1,65 +1,172 @@
-# Chapter 1: Introduction to Data Algorithms
+# Chapter 1: Introduction to Spark and PySpark
 
-This chapter introduces fundamental PySpark concepts:
-
-- Resilient Distributed Datasets (RDDs) - A set of elements of the same type `RDD[T] (each element has type T)` immutable
-- DataFrames - A table of rows with named columns, also immutable
-- Common transformations.
+This chapter introduces PySpark as the main component of the Spark ecosystem, covering Spark's architecture, data abstractions (RDDs and DataFrames), core transformations and actions, and a complete ETL pipeline example.
 
 ## Examples
 
-| Example | Description |
-| --------- | ------------- |
-| `rdd_map_transformation.py` | Demonstrates `map()` and `mapValues()` transformations |
-| `rdd_transformations_overview.py` | Overview of `filter`, `flatMap`, `groupByKey`, `reduceByKey`, `sortBy`, `cartesian` |
-| `average_by_key_reducebykey.py` | Calculate averages per key using the (sum, count) pattern with `reduceByKey()` |
-| `dataframe_basics.py` | DataFrame creation, filtering, selecting, and aggregations |
+| Example | Description | Key Concepts |
+| --- | --- | --- |
+| `rdd_map_transformation.py` | Demonstrates `map()` and `mapValues()` as 1-to-1 transformations | map(), mapValues(), NamedTuple |
+| `rdd_transformations_overview.py` | Overview of core RDD transformations | filter, flatMap, groupByKey, reduceByKey, sortBy, cartesian |
+| `average_by_key_reducebykey.py` | Calculates averages per key using the (sum, count) pattern | reduceByKey(), mapValues(), aggregation |
+| `dataframe_basics.py` | DataFrame creation, filtering, selecting, and aggregations | DataFrame API, filter, groupBy, withColumn |
+| `etl_census_dataframe.py` | Complete ETL pipeline with US Census data | Extract (JSON), Transform (filter + column), Load (CSV) |
 
 ## Running Examples
 
-From the project root:
-
 ```bash
-# Run with Python
+# Run RDD map transformation
 make run CHAPTER=chapter_01 EXAMPLE=rdd_map_transformation
 
-# Run with spark-submit (for full Spark context)
+# Run RDD transformations overview
+make run CHAPTER=chapter_01 EXAMPLE=rdd_transformations_overview
+
+# Run average by key
+make run CHAPTER=chapter_01 EXAMPLE=average_by_key_reducebykey
+
+# Run DataFrame basics
 make run-spark CHAPTER=chapter_01 EXAMPLE=dataframe_basics
+
+# Run ETL pipeline
+make run-spark CHAPTER=chapter_01 EXAMPLE=etl_census_dataframe
 ```
 
 ## Key Concepts
 
-- The **SparkSession** instance is represented as a spark object. Reading input creates a new RDD as an
-RDD[String]: each input record is converted to an RDD element of the type String (if your input path has N records, then the number of RDD elements is N), gives you access to an instance of SparkContext.
+### Spark Architecture
 
-- The **SparkContext** holds a connection to the Spark cluster manager and can be used to create RDDs and broadcast variables in the cluster. A shell (such as the PySpark shell) or PySpark driver program cannot create more than one instance of SparkContext.
+Spark uses a master/worker architecture to distribute data processing across a cluster:
 
-- **Driver** All Spark applications (including the PySpark shell and standalone Python programs) run as independent sets of processes. These processes are coordinated by a SparkContext in a driver program. To submit a standalone Python program to Spark, you need to write a driver program with the PySpark API (or Java or Scala). This program is in charge of the process of running the main() function of the application and creating the SparkContext. It can also be used to create RDDs and DataFrames.
+| Component | Role |
+| --- | --- |
+| **SparkSession** | Entry point for DataFrame and Dataset APIs. Created via the builder pattern |
+| **SparkContext** | Main entry point for RDD operations. Available as `spark.sparkContext` |
+| **Driver** | Coordinates all processes, runs `main()`, creates SparkContext |
+| **Worker** | Executes tasks assigned by the cluster manager |
+| **Cluster Manager** | Allocates resources (Standalone, YARN, Kubernetes, Mesos) |
 
-- **Worker** In a Spark cluster environment, there are two types of nodes: one (or two, for high availability) master and a set of workers. A worker is any node that can run programs in the cluster.
+```python
+from pyspark.sql import SparkSession
 
-- When start a PySpark shell (by executing `<spark-installed-dir>/bin/pyspark`), you automatically get two variables/objects defined, `spark` An instance of SparkSession, which is ideal for creating DataFrames and `sc` An instance of SparkContext, which is ideal for creating RDDs
+# Create a SparkSession (entry point for everything)
+spark = SparkSession.builder \
+    .master("local[*]") \
+    .appName("my-app") \
+    .getOrCreate()
 
-- **Actions** Spark actions are RDD operations or functions that produce non-RDD values. Infor‐
-mally, we can express an action as: `action: RDD => non-RDD value`
+# Access SparkContext for RDD operations
+sc = spark.sparkContext
+```
 
-- Avoid `collect()` on large datasets, use the `take()` or `takeSample()` actions instead. For example `RDD.take(N)` returns the first N elements of the RDD and `DataFrame.take(N)` returns the first N rows of the DataFrame as a list of Row objects.
+When you start the PySpark shell, `spark` (SparkSession) and `sc` (SparkContext) are automatically available.
 
-- In a **Nutshell**, to solve a data analytics problem in PySpark, you read data and represent it as an RDD or DataFrame (depending on the nature of the data format), then write a set of transformations to convert your data into the desired output. Spark automatically partitions your DataFrames and RDDs and distributes the partitions across different cluster nodes. Partitions are the basic units of parallel‐ism in Spark. Parallelism is what allows developers to perform tasks on hundreds of computer servers in a cluster in parallel and independently. A partition in Spark is a chunk (a logical division) of data stored on a node in the cluster. DataFrames and RDDs are collections of partitions. Spark has a default data partitioner for RDDs and DataFrames, but you may override that partitioning with your own custom programming.
+### Spark Data Abstractions
 
-### RDD Transformations
+PySpark supports two main data abstractions:
 
-Support two types of operations: transformations, which transform the source RDD(s) into one or more new RDDs, and actions, which transform the source RDD(s) into a non-RDD object such as a dictionary or array.
-RDDs are not evaluated until an action is performed on them: this means that transformations are lazily evaluated. If an RDD fails during a transformation, the data lineage of transformations rebuilds the RDD.
+| Abstraction | API Level | Structure | Use Case |
+| --- | --- | --- | --- |
+| **RDD[T]** | Low-level | Unstructured collection of elements of type T | Fine-grained control, custom transformations |
+| **DataFrame** | High-level | Table with named columns (like SQL/pandas) | Structured data, SQL queries, optimized execution |
 
-- **map()**: 1-to-1 transformation, applies function to each element
-- **flatMap()**: 1-to-many transformation, flattens results
-- **filter()**: Selects elements matching a predicate
-- **reduceByKey()**: Aggregates values by key (more efficient than groupByKey)
-- **groupByKey()**: Groups values by key (use sparingly, memory intensive)
+> **Note**: The `Dataset` abstraction exists in Java/Scala but is **not available** in PySpark.
+
+### Transformations vs Actions
+
+RDDs support two types of operations:
+
+| Type | Description | Evaluation | Examples |
+| --- | --- | --- | --- |
+| **Transformation** | Creates a new RDD from an existing one | Lazy (deferred until action) | `map()`, `flatMap()`, `filter()`, `reduceByKey()` |
+| **Action** | Produces a non-RDD result | Immediate (triggers computation) | `collect()`, `count()`, `take()`, `saveAsTextFile()` |
+
+Transformations are **lazily evaluated** — they build a lineage graph but don't execute until an action triggers computation. If an RDD fails during a transformation, the lineage rebuilds it automatically.
+
+```python
+# Transformation chain (nothing executes yet)
+result = rdd.filter(lambda x: x[1] > 0) \
+            .mapValues(lambda v: (v, 1)) \
+            .reduceByKey(lambda a, b: (a[0]+b[0], a[1]+b[1]))
+
+# Action triggers execution of the entire chain
+result.collect()
+```
+
+> **Warning**: Avoid `collect()` on large RDDs — it copies the entire dataset to the driver's memory. Use `take(N)` or `takeSample()` instead.
+
+### reduceByKey() vs groupByKey()
+
+Both aggregate values by key, but with very different performance characteristics:
+
+```python
+# These produce the same results:
+rdd.groupByKey().mapValues(lambda values: sum(values))
+rdd.reduceByKey(lambda x, y: x + y)
+```
+
+| Aspect | reduceByKey() | groupByKey() |
+| --- | --- | --- |
+| **Local aggregation** | Combines per partition first | Sends all data over network |
+| **Shuffle volume** | Only partial results | Entire dataset |
+| **Memory risk** | Low | OOM if many values per key |
+| **Scalability** | Preferred for large datasets | Use sparingly |
+
+**Rule of thumb**: If you're grouping to perform an aggregation (sum, count, average), always prefer `reduceByKey()` or `combineByKey()`.
 
 ### DataFrames
 
-- Higher-level abstraction over RDDs
-- SQL-like operations: `filter()`, `select()`, `groupBy()`, `join()`
-- Better optimization through Catalyst query optimizer
+DataFrames provide a higher-level abstraction with named columns, SQL-like operations, and automatic optimization through the Catalyst query optimizer:
+
+```python
+# Create DataFrame from data
+dept_emps = [("Sales", "Barb", 40), ("Sales", "Dan", 20),
+             ("IT", "Alex", 22), ("IT", "Jane", 24)]
+df = spark.createDataFrame(dept_emps, ["dept", "name", "hours"])
+
+# SQL-like operations
+from pyspark.sql.functions import avg, sum
+df.groupBy("dept") \
+  .agg(avg("hours").alias("average"), sum("hours").alias("total")) \
+  .show()
+```
+
+DataFrames can be created from JSON, CSV, Parquet files, databases, or existing RDDs.
+
+### ETL Pattern
+
+ETL (Extract, Transform, Load) is the standard pattern for data pipelines:
+
+| Step | Purpose | Example |
+| --- | --- | --- |
+| **Extract** | Read data from source | `spark.read.json(path)` |
+| **Transform** | Clean, filter, compute | `df.filter(col("age") > 54).withColumn(...)` |
+| **Load** | Write to destination | `df.write.csv(path)` or `df.write.jdbc(...)` |
+
+```python
+# Extract
+census_df = spark.read.json("census_2010.json")
+
+# Transform — filter seniors and add total column
+seniors = census_df.filter(col("age") > 54)
+seniors = seniors.withColumn("total", col("males") + col("females"))
+
+# Load — write to output
+seniors.write.mode("overwrite").csv("output/seniors", header=True)
+```
+
+See `etl_census_dataframe.py` for the complete working example.
+
+## Performance Considerations
+
+| Topic | Recommendation |
+| --- | --- |
+| `reduceByKey()` vs `groupByKey()` | Prefer `reduceByKey()` — combines locally before shuffle |
+| `collect()` on large RDDs | Avoid — use `take(N)` or `takeSample()` instead |
+| Data partitioning | Spark auto-partitions; override only when needed |
+| `combineByKey()` | Use when reducer output type differs from input type |
+
+## Additional Resources
+
+- [PySpark API Documentation](https://spark.apache.org/docs/latest/api/python/)
+- [Spark RDD Programming Guide](https://spark.apache.org/docs/latest/rdd-programming-guide.html)
+- [Spark SQL Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)

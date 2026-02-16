@@ -134,20 +134,43 @@ Only errors are shown on the console during script execution.
 
 ## Chapters Overview
 
-| Chapter | Topic |
-| --------- | ------- |
-| 01 | Introduction to Data Algorithms |
-| 02 | MapReduce Pattern - DNA Base Count |
-| 03 | Mapper Transformations |
-| 04 | Reducer Transformations |
-| 05 | Partitioning Data |
-| 06 | Graph Algorithms |
-| 07 | Interacting with External Data Sources |
-| 08 | Ranking Algorithms |
-| 09 | Classic Data Design Patterns |
-| 10 | Practical Data Design Patterns |
-| 11 | Join Design Patterns |
-| 12 | Feature Engineering in PySpark |
+| Chapter | Topic | Status |
+| --- | --- | --- |
+| 01 | [Introduction to Spark and PySpark](src/chapter_01/README.md) | Done |
+| 02 | [MapReduce Pattern — DNA Base Count](src/chapter_02/README.md) | Done |
+| 03 | [Mapper Transformations](src/chapter_03/README.md) | Done |
+| 04 | [Reductions in Spark](src/chapter_04/README.md) | Done |
+| 05 | [Partitioning Data](src/chapter_05/README.md) | Done |
+| 06 | [Graph Algorithms](src/chapter_06/README.md) | Done |
+| 07 | Interacting with External Data Sources | Pending |
+| 08 | Ranking Algorithms | Pending |
+| 09 | Classic Data Design Patterns | Pending |
+| 10 | Practical Data Design Patterns | Pending |
+| 11 | Join Design Patterns | Pending |
+| 12 | Feature Engineering in PySpark | Pending |
+
+## Patterns Quick Reference
+
+A cross-chapter index of common data engineering patterns and which example implements them:
+
+| Pattern | Chapter | Example | Key API |
+| --- | --- | --- | --- |
+| ETL Pipeline | 01 | `etl_census_dataframe.py` | `read.json()`, `filter()`, `withColumn()`, `write.csv()` |
+| MapReduce (basic) | 02 | `dna_base_count_ver_1.py` | `flatMap()` + `reduceByKey()` |
+| InMapper Combiner | 02 | `dna_base_count_ver_2.py` | `flatMap()` with local dict |
+| Partition-level Aggregation | 02 | `dna_base_count_ver_3.py` | `mapPartitions()` + `reduceByKey()` |
+| 1-to-1 Transformation | 03 | `map_vs_flatmap.py` | `map()` |
+| 1-to-Many / Flattening | 03 | `map_vs_flatmap.py` | `flatMap()` |
+| Batch Processing | 03 | `mappartitions_transformation.py` | `mapPartitions()` |
+| Value-only Transform | 03 | `mapvalues_transformation.py` | `mapValues()` |
+| Average by Key | 01, 04 | `average_by_key_reducebykey.py`, `movie_avg_rating.py` | `reduceByKey()` with (sum, count) |
+| Sum by Key (4 ways) | 04 | `reduction_warmup.py` | `reduceByKey`, `groupByKey`, `aggregateByKey`, `combineByKey` |
+| Monoid-safe Reduction | 04 | `movie_avg_rating.py` | (sum, count) pattern |
+| RDD Partition Management | 05 | `partition_basics.py` | `getNumPartitions()`, `glom()`, `repartition()`, `coalesce()` |
+| Physical Partitioning | 05 | `physical_partitioning.py` | `write.partitionBy()`, Parquet, partition pruning |
+| Graph Degree Analysis | 06 | `graph_basics.py` | `groupBy()`, self-join, in/out degree |
+| Graph Path Finding | 06 | `graph_basics.py`, `flight_analysis.py` | Self-join for 2-hop paths, triangles |
+| Connecting Flights | 06 | `flight_analysis.py` | Self-join on edges, route aggregation |
 
 ## References
 

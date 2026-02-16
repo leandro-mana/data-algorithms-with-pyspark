@@ -263,6 +263,7 @@ spark-warehouse/
 *.parquet
 *.orc
 .logs/
+.output/
 
 # In case of having the Book in pdf or epub format, avoid committing them in docs/
 docs/*.pdf
