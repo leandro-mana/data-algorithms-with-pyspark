@@ -145,7 +145,7 @@ Only errors are shown on the console during script execution.
 | 07 | [Interacting with External Data Sources](src/chapter_07/README.md) | Done |
 | 08 | [Ranking Algorithms](src/chapter_08/README.md) | Done |
 | 09 | [Classic Data Design Patterns](src/chapter_09/README.md) | Done |
-| 10 | Practical Data Design Patterns | Pending |
+| 10 | [Practical Data Design Patterns](src/chapter_10/README.md) | Done |
 | 11 | Join Design Patterns | Pending |
 | 12 | Feature Engineering in PySpark | Pending |
 
@@ -177,6 +177,10 @@ A cross-chapter index of common data engineering patterns and which example impl
 | PageRank | 08 | `pagerank.py` | `join()` + `flatMap()` + `reduceByKey()`, iterative convergence |
 | Classic Design Patterns | 09 | `design_patterns.py` | map, filter, combineByKey, join, mapPartitions |
 | Inverted Index | 09 | `inverted_index.py` | `wholeTextFiles()`, `flatMap()`, `reduceByKey()`, `groupByKey()` |
+| In-Mapper Combining | 10 | `in_mapper_combining.py` | `mapPartitions()`, `defaultdict`, local aggregation |
+| Top-N / Bottom-N | 10 | `top_n_minmax.py` | `mapPartitions()`, `heapq`, `takeOrdered()` |
+| MinMax Summarization | 10 | `top_n_minmax.py` | `mapPartitions()`, partition-level min/max/count |
+| Multi-level Binning | 10 | `binning_and_sorting.py` | `UDF`, `partitionBy()`, partition pruning |
 
 ## References
 
