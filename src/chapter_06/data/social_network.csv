@@ -1,0 +1,13 @@
+src,dst,relationship
+Alice,Bob,friend
+Bob,Charlie,follow
+Charlie,Bob,follow
+Fanny,Charlie,follow
+Esther,Fanny,follow
+Esther,David,friend
+David,Alice,friend
+Alice,Esther,friend
+David,Esther,friend
+Alice,David,friend
+Bob,Alice,friend
+Esther,Alice,follow
