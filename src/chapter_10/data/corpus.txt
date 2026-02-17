@@ -1,0 +1,6 @@
+foxy fox jumped over fence
+the quick brown fox jumps over the lazy dog
+foxy fox jumped
+data algorithms with spark
+spark is a fast distributed computing framework
+mapreduce design patterns for big data

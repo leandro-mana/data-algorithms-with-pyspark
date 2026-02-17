@@ -145,7 +145,7 @@ Only errors are shown on the console during script execution.
 | 07 | [Interacting with External Data Sources](src/chapter_07/README.md) | Done |
 | 08 | Ranking Algorithms | Pending |
 | 09 | Classic Data Design Patterns | Pending |
-| 10 | Practical Data Design Patterns | Pending |
+| 10 | [Practical Data Design Patterns](src/chapter_10/README.md) | Done |
 | 11 | Join Design Patterns | Pending |
 | 12 | Feature Engineering in PySpark | Pending |
 
@@ -173,6 +173,10 @@ A cross-chapter index of common data engineering patterns and which example impl
 | Connecting Flights | 06 | `flight_analysis.py` | Self-join on edges, route aggregation |
 | CSV/JSON Read/Write | 07 | `csv_json_operations.py` | `read.csv()`, `read.json()`, `StructType`, `explode()` |
 | Parquet Analytics | 07 | `parquet_operations.py` | `read.parquet()`, column pruning, predicate pushdown, `partitionBy()` |
+| In-Mapper Combining | 10 | `in_mapper_combining.py` | `mapPartitions()`, `defaultdict`, local aggregation |
+| Top-N / Bottom-N | 10 | `top_n_minmax.py` | `mapPartitions()`, `heapq`, `takeOrdered()` |
+| MinMax Summarization | 10 | `top_n_minmax.py` | `mapPartitions()`, partition-level min/max/count |
+| Multi-level Binning | 10 | `binning_and_sorting.py` | `UDF`, `partitionBy()`, partition pruning |
 
 ## References
 
