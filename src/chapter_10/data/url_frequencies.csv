@@ -1,0 +1,16 @@
+url,frequency
+http://spark.apache.org,9500
+http://python.org,8200
+http://github.com,12000
+http://stackoverflow.com,11500
+http://docs.python.org,7800
+http://medium.com,6500
+http://reddit.com,10200
+http://news.ycombinator.com,5800
+http://arxiv.org,4200
+http://kaggle.com,7100
+http://databricks.com,3900
+http://aws.amazon.com,8700
+http://cloud.google.com,6800
+http://azure.microsoft.com,5500
+http://jupyter.org,4800
