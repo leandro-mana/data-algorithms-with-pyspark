@@ -9,6 +9,7 @@ packages = [{include = "src"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 pyspark = "^4.0.0"
+numpy = "^2.4.2"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.0"

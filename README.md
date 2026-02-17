@@ -147,7 +147,7 @@ Only errors are shown on the console during script execution.
 | 09 | Classic Data Design Patterns | Pending |
 | 10 | Practical Data Design Patterns | Pending |
 | 11 | Join Design Patterns | Pending |
-| 12 | Feature Engineering in PySpark | Pending |
+| 12 | [Feature Engineering in PySpark](src/chapter_12/README.md) | Done |
 
 ## Patterns Quick Reference
 
@@ -173,6 +173,10 @@ A cross-chapter index of common data engineering patterns and which example impl
 | Connecting Flights | 06 | `flight_analysis.py` | Self-join on edges, route aggregation |
 | CSV/JSON Read/Write | 07 | `csv_json_operations.py` | `read.csv()`, `read.json()`, `StructType`, `explode()` |
 | Parquet Analytics | 07 | `parquet_operations.py` | `read.parquet()`, column pruning, predicate pushdown, `partitionBy()` |
+| MinMax / Normalization | 12 | `feature_transformations.py` | `MinMaxScaler`, `Normalizer`, `VectorAssembler`, `Pipeline` |
+| Bucketing / Discretization | 12 | `feature_transformations.py` | `Bucketizer`, `QuantileDiscretizer`, `F.log()` |
+| Categorical Encoding | 12 | `categorical_encoding.py` | `StringIndexer`, `OneHotEncoder`, `VectorAssembler`, `Pipeline` |
+| TF-IDF Text Features | 12 | `text_features.py` | `Tokenizer`, `HashingTF`, `CountVectorizer`, `IDF`, `Pipeline` |
 
 ## References
 
