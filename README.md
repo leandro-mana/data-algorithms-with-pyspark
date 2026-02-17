@@ -142,7 +142,7 @@ Only errors are shown on the console during script execution.
 | 04 | [Reductions in Spark](src/chapter_04/README.md) | Done |
 | 05 | [Partitioning Data](src/chapter_05/README.md) | Done |
 | 06 | [Graph Algorithms](src/chapter_06/README.md) | Done |
-| 07 | Interacting with External Data Sources | Pending |
+| 07 | [Interacting with External Data Sources](src/chapter_07/README.md) | Done |
 | 08 | Ranking Algorithms | Pending |
 | 09 | Classic Data Design Patterns | Pending |
 | 10 | Practical Data Design Patterns | Pending |
@@ -171,6 +171,8 @@ A cross-chapter index of common data engineering patterns and which example impl
 | Graph Degree Analysis | 06 | `graph_basics.py` | `groupBy()`, self-join, in/out degree |
 | Graph Path Finding | 06 | `graph_basics.py`, `flight_analysis.py` | Self-join for 2-hop paths, triangles |
 | Connecting Flights | 06 | `flight_analysis.py` | Self-join on edges, route aggregation |
+| CSV/JSON Read/Write | 07 | `csv_json_operations.py` | `read.csv()`, `read.json()`, `StructType`, `explode()` |
+| Parquet Analytics | 07 | `parquet_operations.py` | `read.parquet()`, column pruning, predicate pushdown, `partitionBy()` |
 
 ## References
 

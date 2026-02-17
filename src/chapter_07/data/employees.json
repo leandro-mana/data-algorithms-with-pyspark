@@ -1,0 +1,8 @@
+{"name": "Alice", "age": 34, "department": "Engineering", "salary": 95000, "skills": ["Python", "Spark", "SQL"]}
+{"name": "Bob", "age": 45, "department": "Marketing", "salary": 72000, "skills": ["Excel", "Tableau"]}
+{"name": "Charlie", "age": 28, "department": "Engineering", "salary": 85000, "skills": ["Java", "Scala", "Spark"]}
+{"name": "Diana", "age": 52, "department": "Finance", "salary": 110000, "skills": ["Excel", "SQL", "R"]}
+{"name": "Eve", "age": 31, "department": "Marketing", "salary": 68000, "skills": ["Tableau", "Python"]}
+{"name": "Frank", "age": 41, "department": "Engineering", "salary": 102000, "skills": ["Python", "Spark", "Kafka"]}
+{"name": "Grace", "age": 37, "department": "Finance", "salary": 98000, "skills": ["SQL", "Excel", "Python"]}
+{"name": "Hank", "age": 29, "department": "Engineering", "salary": 88000, "skills": ["Python", "SQL"]}
