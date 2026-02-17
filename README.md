@@ -146,7 +146,7 @@ Only errors are shown on the console during script execution.
 | 08 | Ranking Algorithms | Pending |
 | 09 | Classic Data Design Patterns | Pending |
 | 10 | Practical Data Design Patterns | Pending |
-| 11 | Join Design Patterns | Pending |
+| 11 | [Join Design Patterns](src/chapter_11/README.md) | Done |
 | 12 | Feature Engineering in PySpark | Pending |
 
 ## Patterns Quick Reference
@@ -173,6 +173,8 @@ A cross-chapter index of common data engineering patterns and which example impl
 | Connecting Flights | 06 | `flight_analysis.py` | Self-join on edges, route aggregation |
 | CSV/JSON Read/Write | 07 | `csv_json_operations.py` | `read.csv()`, `read.json()`, `StructType`, `explode()` |
 | Parquet Analytics | 07 | `parquet_operations.py` | `read.parquet()`, column pruning, predicate pushdown, `partitionBy()` |
+| Join Types (inner/left/right) | 11 | `join_types.py` | `join()`, custom RDD join with union+groupByKey |
+| Map-Side Join (Broadcast) | 11 | `map_side_join.py` | `broadcast()`, `collectAsMap()`, UDF lookups |
 
 ## References
 
