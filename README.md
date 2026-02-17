@@ -147,7 +147,7 @@ Only errors are shown on the console during script execution.
 | 09 | [Classic Data Design Patterns](src/chapter_09/README.md) | Done |
 | 10 | [Practical Data Design Patterns](src/chapter_10/README.md) | Done |
 | 11 | [Join Design Patterns](src/chapter_11/README.md) | Done |
-| 12 | Feature Engineering in PySpark | Pending |
+| 12 | [Feature Engineering in PySpark](src/chapter_12/README.md) | Done |
 
 ## Patterns Quick Reference
 
@@ -183,6 +183,10 @@ A cross-chapter index of common data engineering patterns and which example impl
 | Multi-level Binning | 10 | `binning_and_sorting.py` | `UDF`, `partitionBy()`, partition pruning |
 | Join Types (inner/left/right) | 11 | `join_types.py` | `join()`, custom RDD join with union+groupByKey |
 | Map-Side Join (Broadcast) | 11 | `map_side_join.py` | `broadcast()`, `collectAsMap()`, UDF lookups |
+| MinMax / Normalization | 12 | `feature_transformations.py` | `MinMaxScaler`, `Normalizer`, `VectorAssembler`, `Pipeline` |
+| Bucketing / Discretization | 12 | `feature_transformations.py` | `Bucketizer`, `QuantileDiscretizer`, `F.log()` |
+| Categorical Encoding | 12 | `categorical_encoding.py` | `StringIndexer`, `OneHotEncoder`, `VectorAssembler`, `Pipeline` |
+| TF-IDF Text Features | 12 | `text_features.py` | `Tokenizer`, `HashingTF`, `CountVectorizer`, `IDF`, `Pipeline` |
 
 ## References
 
