@@ -1,0 +1,9 @@
+id,brand,safety_level,engine_type,price
+1,Toyota,High,Gasoline,35000
+2,Honda,Medium,Hybrid,32000
+3,Tesla,Very-High,Electric,55000
+4,Ford,Medium,Gasoline,28000
+5,BMW,High,Gasoline,48000
+6,Nissan,Low,Electric,31000
+7,Chevrolet,Medium,Hybrid,34000
+8,Mercedes,Very-High,Gasoline,62000

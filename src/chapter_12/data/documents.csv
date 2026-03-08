@@ -1,0 +1,6 @@
+label,text
+0,spark is a fast distributed computing framework
+1,hadoop mapreduce is a batch processing framework
+0,pyspark makes spark accessible from python
+1,java and scala are used for spark development
+0,machine learning with spark mllib is powerful
