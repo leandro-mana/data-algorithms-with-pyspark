@@ -144,7 +144,7 @@ Only errors are shown on the console during script execution.
 | 06 | [Graph Algorithms](src/chapter_06/README.md) | Done |
 | 07 | [Interacting with External Data Sources](src/chapter_07/README.md) | Done |
 | 08 | [Ranking Algorithms](src/chapter_08/README.md) | Done |
-| 09 | Classic Data Design Patterns | Pending |
+| 09 | [Classic Data Design Patterns](src/chapter_09/README.md) | Done |
 | 10 | Practical Data Design Patterns | Pending |
 | 11 | Join Design Patterns | Pending |
 | 12 | Feature Engineering in PySpark | Pending |
@@ -175,6 +175,8 @@ A cross-chapter index of common data engineering patterns and which example impl
 | Parquet Analytics | 07 | `parquet_operations.py` | `read.parquet()`, column pruning, predicate pushdown, `partitionBy()` |
 | Rank Product | 08 | `rank_product.py` | `combineByKey()`, `zipWithIndex()`, geometric mean |
 | PageRank | 08 | `pagerank.py` | `join()` + `flatMap()` + `reduceByKey()`, iterative convergence |
+| Classic Design Patterns | 09 | `design_patterns.py` | map, filter, combineByKey, join, mapPartitions |
+| Inverted Index | 09 | `inverted_index.py` | `wholeTextFiles()`, `flatMap()`, `reduceByKey()`, `groupByKey()` |
 
 ## References
 
