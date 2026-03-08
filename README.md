@@ -146,7 +146,7 @@ Only errors are shown on the console during script execution.
 | 08 | [Ranking Algorithms](src/chapter_08/README.md) | Done |
 | 09 | [Classic Data Design Patterns](src/chapter_09/README.md) | Done |
 | 10 | [Practical Data Design Patterns](src/chapter_10/README.md) | Done |
-| 11 | Join Design Patterns | Pending |
+| 11 | [Join Design Patterns](src/chapter_11/README.md) | Done |
 | 12 | Feature Engineering in PySpark | Pending |
 
 ## Patterns Quick Reference
@@ -181,6 +181,8 @@ A cross-chapter index of common data engineering patterns and which example impl
 | Top-N / Bottom-N | 10 | `top_n_minmax.py` | `mapPartitions()`, `heapq`, `takeOrdered()` |
 | MinMax Summarization | 10 | `top_n_minmax.py` | `mapPartitions()`, partition-level min/max/count |
 | Multi-level Binning | 10 | `binning_and_sorting.py` | `UDF`, `partitionBy()`, partition pruning |
+| Join Types (inner/left/right) | 11 | `join_types.py` | `join()`, custom RDD join with union+groupByKey |
+| Map-Side Join (Broadcast) | 11 | `map_side_join.py` | `broadcast()`, `collectAsMap()`, UDF lookups |
 
 ## References
 
