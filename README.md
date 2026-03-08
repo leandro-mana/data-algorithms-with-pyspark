@@ -1,5 +1,14 @@
 # Data Algorithms with PySpark
 
+[![CI](https://github.com/leandro-mana/data-algorithms-with-pyspark/actions/workflows/ci.yml/badge.svg)](https://github.com/leandro-mana/data-algorithms-with-pyspark/actions/workflows/ci.yml)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
+[![PySpark 4.x](https://img.shields.io/badge/pyspark-4.x-E25A1C.svg)](https://spark.apache.org/docs/latest/api/python/)
+[![Code Style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://docs.astral.sh/ruff/)
+[![Type Checked: mypy](https://img.shields.io/badge/type%20checked-mypy-blue.svg)](https://mypy-lang.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Chapters](https://img.shields.io/badge/chapters-12-orange.svg)](src/)
+[![Examples](https://img.shields.io/badge/examples-55-brightgreen.svg)](src/)
+
 This repository contains **Python-only** implementations with a simplified project structure and unified Makefile runner, for study examples from the book [Data Algorithms with Spark](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) by Mahmoud Parsian.
 
 ## Requirements
