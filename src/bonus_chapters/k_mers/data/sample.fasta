@@ -1,0 +1,10 @@
+>seq_1 Repeating ATCG motif
+ATCGATCGATCGATCGATCG
+>seq_2 Complementary CGAT motif
+CGATCGATCGATCGATCGAT
+>seq_3 Mixed with AAAA spacer
+ATCGAAAAATCGAAAAATCG
+>seq_4 Short read
+ATCGATCG
+>seq_5 Alternating GCGC motif
+GCGCGCGCGCGCGCGCGCGC

@@ -1,0 +1,24 @@
+@read_1 Repeating ATCG motif, high quality
+ATCGATCGATCGATCGATCG
++
+IIIIIIIIIIIIIIIIIIII
+@read_2 Complementary CGAT motif, high quality
+CGATCGATCGATCGATCGAT
++
+HHHHHHHHHHHHHHHHHHHH
+@read_3 Mixed with AAAA spacer, high quality
+ATCGAAAAATCGAAAAATCG
++
+IIIIIIIIIIIIIIIIIIII
+@read_4 Short read, high quality
+ATCGATCG
++
+IIIIIIII
+@read_5 Low quality read (will be filtered at Q20)
+ATCGATCGATCGATCGATCG
++
+!!!!!!!!!!!!!!!!!!!!
+@read_6 Alternating GCGC motif, high quality
+GCGCGCGCGCGCGCGCGCGC
++
+HHHHHHHHHHHHHHHHHHHH
