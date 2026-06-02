@@ -6,20 +6,20 @@ This chapter focuses on reduction transformations for (key, value) pair RDDs. Fo
 
 | Example | Description | Key Concepts |
 | --- | --- | --- |
-| `reduction_warmup.py` | Sum per key using all 4 reduction approaches side-by-side | reduceByKey, groupByKey, aggregateByKey, combineByKey |
-| `movie_avg_rating.py` | Average movie rating per user using the (sum, count) monoid pattern | Monoids, (sum, count) pattern, wrong vs correct mean |
+| `01_reduction_warmup.py` | Sum per key using all 4 reduction approaches side-by-side | reduceByKey, groupByKey, aggregateByKey, combineByKey |
+| `02_movie_avg_rating.py` | Average movie rating per user using the (sum, count) monoid pattern | Monoids, (sum, count) pattern, wrong vs correct mean |
 
 ## Running Examples
 
 ```bash
 # Run reduction warmup (all 4 approaches compared)
-make run CHAPTER=chapter_04 EXAMPLE=reduction_warmup
+make run CHAPTER=chapter_04 EXAMPLE=01_reduction_warmup
 
 # Run movie average rating with sample data
-make run-spark CHAPTER=chapter_04 EXAMPLE=movie_avg_rating
+make run-spark CHAPTER=chapter_04 EXAMPLE=02_movie_avg_rating
 
 # Run with a custom ratings file (MovieLens format)
-make run-spark CHAPTER=chapter_04 EXAMPLE=movie_avg_rating ARGS="/path/to/ratings.csv"
+make run-spark CHAPTER=chapter_04 EXAMPLE=02_movie_avg_rating ARGS="/path/to/ratings.csv"
 ```
 
 ## Key Concepts

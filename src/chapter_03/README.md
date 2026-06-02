@@ -6,25 +6,25 @@ This chapter covers the fundamental mapper transformations in PySpark: `map()`, 
 
 | Example | Description | Use Case |
 | --------- | ------------- | --------- |
-| `map_vs_flatmap.py` | Comparison of `map()` (1-to-1) vs `flatMap()` (1-to-many) | Flattening, tokenization |
-| `mappartitions_transformation.py` | Using `mapPartitions()` for efficient batch processing | Local aggregation, expensive setup |
-| `mapvalues_transformation.py` | Using `mapValues()` to transform only values in pairs | Key-value processing, averages |
+| `01_map_vs_flatmap.py` | Comparison of `map()` (1-to-1) vs `flatMap()` (1-to-many) | Flattening, tokenization |
+| `02_mappartitions_transformation.py` | Using `mapPartitions()` for efficient batch processing | Local aggregation, expensive setup |
+| `03_mapvalues_transformation.py` | Using `mapValues()` to transform only values in pairs | Key-value processing, averages |
 
 ## Running Examples
 
 ```bash
 # Run map vs flatMap comparison
-make run CHAPTER=chapter_03 EXAMPLE=map_vs_flatmap
+make run CHAPTER=chapter_03 EXAMPLE=01_map_vs_flatmap
 
 # Run mapPartitions with default sample data
-make run CHAPTER=chapter_03 EXAMPLE=mappartitions_transformation
+make run CHAPTER=chapter_03 EXAMPLE=02_mappartitions_transformation
 
 # Run mapPartitions with a custom data file
-make run-spark CHAPTER=chapter_03 EXAMPLE=mappartitions_transformation \
+make run-spark CHAPTER=chapter_03 EXAMPLE=02_mappartitions_transformation \
     ARGS="src/chapter_03/data/sample_numbers.txt"
 
 # Run mapValues demonstration
-make run CHAPTER=chapter_03 EXAMPLE=mapvalues_transformation
+make run CHAPTER=chapter_03 EXAMPLE=03_mapvalues_transformation
 ```
 
 ## Key Concepts

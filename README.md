@@ -49,7 +49,7 @@ make install
 make pre-commit-install
 
 # Run an example
-make run CHAPTER=chapter_01 EXAMPLE=rdd_map_transformation
+make run CHAPTER=chapter_01 EXAMPLE=01_rdd_map_transformation
 
 # List available examples in a chapter
 make list-examples CHAPTER=chapter_01
@@ -101,13 +101,13 @@ src/
 
 ```bash
 # Run with Python (simple scripts)
-make run CHAPTER=chapter_03 EXAMPLE=map_vs_flatmap
+make run CHAPTER=chapter_03 EXAMPLE=01_map_vs_flatmap
 
 # Run with spark-submit (full Spark context)
-make run-spark CHAPTER=chapter_02 EXAMPLE=dna_base_count_basic
+make run-spark CHAPTER=chapter_02 EXAMPLE=01_dna_base_count_ver_1
 
 # Pass arguments to the script
-make run-spark CHAPTER=chapter_02 EXAMPLE=dna_base_count_basic \
+make run-spark CHAPTER=chapter_02 EXAMPLE=01_dna_base_count_ver_1 \
     ARGS="src/chapter_02/data/sample.fasta"
 ```
 

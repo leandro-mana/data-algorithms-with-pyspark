@@ -6,24 +6,24 @@ This chapter demonstrates the classic MapReduce pattern using DNA sequence analy
 
 | Example | Description | Shuffle Efficiency |
 | --- | --- | --- |
-| `dna_base_count_ver_1.py` | Basic flatMap + reduceByKey | Low (1 pair per character) |
-| `dna_base_count_ver_2.py` | InMapper Combiner per record | Medium (1 pair per unique base per record) |
-| `dna_base_count_ver_3.py` | mapPartitions (partition-level) | High (1 pair per unique base per partition) |
+| `01_dna_base_count_ver_1.py` | Basic flatMap + reduceByKey | Low (1 pair per character) |
+| `02_dna_base_count_ver_2.py` | InMapper Combiner per record | Medium (1 pair per unique base per record) |
+| `03_dna_base_count_ver_3.py` | mapPartitions (partition-level) | High (1 pair per unique base per partition) |
 
 ## Running Examples
 
 ```bash
 # Run version 1 (basic) with default sample.fasta
-make run-spark CHAPTER=chapter_02 EXAMPLE=dna_base_count_ver_1
+make run-spark CHAPTER=chapter_02 EXAMPLE=01_dna_base_count_ver_1
 
 # Run version 2 (InMapper Combiner per record)
-make run-spark CHAPTER=chapter_02 EXAMPLE=dna_base_count_ver_2
+make run-spark CHAPTER=chapter_02 EXAMPLE=02_dna_base_count_ver_2
 
 # Run version 3 (mapPartitions — most efficient)
-make run-spark CHAPTER=chapter_02 EXAMPLE=dna_base_count_ver_3
+make run-spark CHAPTER=chapter_02 EXAMPLE=03_dna_base_count_ver_3
 
 # Run with a custom FASTA file
-make run-spark CHAPTER=chapter_02 EXAMPLE=dna_base_count_ver_1 ARGS="/path/to/your/file.fasta"
+make run-spark CHAPTER=chapter_02 EXAMPLE=01_dna_base_count_ver_1 ARGS="/path/to/your/file.fasta"
 ```
 
 ## FASTA File Format

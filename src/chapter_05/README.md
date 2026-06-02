@@ -6,20 +6,20 @@ This chapter covers how Spark partitions data for parallel processing and how to
 
 | Example | Description | Key Concepts |
 | --- | --- | --- |
-| `partition_basics.py` | RDD partition management — inspect, repartition, coalesce, mapPartitions | getNumPartitions, glom, repartition, coalesce |
-| `physical_partitioning.py` | Partition DataFrames to disk by year/month in CSV and Parquet formats | partitionBy, partition pruning, Parquet vs CSV |
+| `01_partition_basics.py` | RDD partition management — inspect, repartition, coalesce, mapPartitions | getNumPartitions, glom, repartition, coalesce |
+| `02_physical_partitioning.py` | Partition DataFrames to disk by year/month in CSV and Parquet formats | partitionBy, partition pruning, Parquet vs CSV |
 
 ## Running Examples
 
 ```bash
 # Run partition basics (RDD partition management)
-make run CHAPTER=chapter_05 EXAMPLE=partition_basics
+make run CHAPTER=chapter_05 EXAMPLE=01_partition_basics
 
 # Run physical partitioning with sample transaction data
-make run-spark CHAPTER=chapter_05 EXAMPLE=physical_partitioning
+make run-spark CHAPTER=chapter_05 EXAMPLE=02_physical_partitioning
 
 # Run with a custom transactions file
-make run-spark CHAPTER=chapter_05 EXAMPLE=physical_partitioning \
+make run-spark CHAPTER=chapter_05 EXAMPLE=02_physical_partitioning \
     ARGS="/path/to/transactions.csv"
 ```
 

@@ -6,17 +6,17 @@ This chapter covers the essential join patterns for combining datasets in Spark.
 
 | Example | Description | Key Concepts |
 | --- | --- | --- |
-| `join_types.py` | Inner, left, right joins + custom MapReduce-style join | DataFrame join, RDD union+groupByKey, Cartesian product, relation tags |
-| `map_side_join.py` | Broadcast join with RDD and DataFrame approaches | broadcast, collectAsMap, UDF, `F.broadcast()` hint |
+| `01_join_types.py` | Inner, left, right joins + custom MapReduce-style join | DataFrame join, RDD union+groupByKey, Cartesian product, relation tags |
+| `02_map_side_join.py` | Broadcast join with RDD and DataFrame approaches | broadcast, collectAsMap, UDF, `F.broadcast()` hint |
 
 ## Running Examples
 
 ```bash
 # Join types (inner, left, right + custom RDD join)
-make run-spark CHAPTER=chapter_11 EXAMPLE=join_types
+make run-spark CHAPTER=chapter_11 EXAMPLE=01_join_types
 
 # Map-side join (broadcast pattern)
-make run-spark CHAPTER=chapter_11 EXAMPLE=map_side_join
+make run-spark CHAPTER=chapter_11 EXAMPLE=02_map_side_join
 ```
 
 ## Key Concepts

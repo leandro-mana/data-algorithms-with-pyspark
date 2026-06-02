@@ -6,21 +6,21 @@ This chapter covers **feature engineering** — the process of transforming raw 
 
 | Example | Description | Use Case |
 | --- | --- | --- |
-| `feature_transformations.py` | MinMaxScaler, Normalizer, Bucketizer, QuantileDiscretizer, log transform | Numeric feature scaling and binning |
-| `categorical_encoding.py` | StringIndexer, OneHotEncoder, VectorAssembler pipeline | Categorical-to-numeric conversion |
-| `text_features.py` | TF-IDF with HashingTF and CountVectorizer | Text document vectorization |
+| `01_feature_transformations.py` | MinMaxScaler, Normalizer, Bucketizer, QuantileDiscretizer, log transform | Numeric feature scaling and binning |
+| `02_categorical_encoding.py` | StringIndexer, OneHotEncoder, VectorAssembler pipeline | Categorical-to-numeric conversion |
+| `03_text_features.py` | TF-IDF with HashingTF and CountVectorizer | Text document vectorization |
 
 ## Running Examples
 
 ```bash
 # Numeric feature transformations (scaling, normalizing, bucketing)
-make run-spark CHAPTER=chapter_12 EXAMPLE=feature_transformations
+make run-spark CHAPTER=chapter_12 EXAMPLE=01_feature_transformations
 
 # Categorical encoding (StringIndexer, OneHotEncoder, full pipeline)
-make run-spark CHAPTER=chapter_12 EXAMPLE=categorical_encoding
+make run-spark CHAPTER=chapter_12 EXAMPLE=02_categorical_encoding
 
 # Text feature engineering (TF-IDF)
-make run-spark CHAPTER=chapter_12 EXAMPLE=text_features
+make run-spark CHAPTER=chapter_12 EXAMPLE=03_text_features
 ```
 
 ## Key Concepts
