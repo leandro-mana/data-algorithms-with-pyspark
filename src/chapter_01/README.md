@@ -6,29 +6,29 @@ This chapter introduces PySpark as the main component of the Spark ecosystem, co
 
 | Example | Description | Key Concepts |
 | --- | --- | --- |
-| `rdd_map_transformation.py` | Demonstrates `map()` and `mapValues()` as 1-to-1 transformations | map(), mapValues(), NamedTuple |
-| `rdd_transformations_overview.py` | Overview of core RDD transformations | filter, flatMap, groupByKey, reduceByKey, sortBy, cartesian |
-| `average_by_key_reducebykey.py` | Calculates averages per key using the (sum, count) pattern | reduceByKey(), mapValues(), aggregation |
-| `dataframe_basics.py` | DataFrame creation, filtering, selecting, and aggregations | DataFrame API, filter, groupBy, withColumn |
-| `etl_census_dataframe.py` | Complete ETL pipeline with US Census data | Extract (JSON), Transform (filter + column), Load (CSV) |
+| `01_rdd_map_transformation.py` | Demonstrates `map()` and `mapValues()` as 1-to-1 transformations | map(), mapValues(), NamedTuple |
+| `02_rdd_transformations_overview.py` | Overview of core RDD transformations | filter, flatMap, groupByKey, reduceByKey, sortBy, cartesian |
+| `03_average_by_key_reducebykey.py` | Calculates averages per key using the (sum, count) pattern | reduceByKey(), mapValues(), aggregation |
+| `04_dataframe_basics.py` | DataFrame creation, filtering, selecting, and aggregations | DataFrame API, filter, groupBy, withColumn |
+| `05_etl_census_dataframe.py` | Complete ETL pipeline with US Census data | Extract (JSON), Transform (filter + column), Load (CSV) |
 
 ## Running Examples
 
 ```bash
 # Run RDD map transformation
-make run CHAPTER=chapter_01 EXAMPLE=rdd_map_transformation
+make run CHAPTER=chapter_01 EXAMPLE=01_rdd_map_transformation
 
 # Run RDD transformations overview
-make run CHAPTER=chapter_01 EXAMPLE=rdd_transformations_overview
+make run CHAPTER=chapter_01 EXAMPLE=02_rdd_transformations_overview
 
 # Run average by key
-make run CHAPTER=chapter_01 EXAMPLE=average_by_key_reducebykey
+make run CHAPTER=chapter_01 EXAMPLE=03_average_by_key_reducebykey
 
 # Run DataFrame basics
-make run-spark CHAPTER=chapter_01 EXAMPLE=dataframe_basics
+make run-spark CHAPTER=chapter_01 EXAMPLE=04_dataframe_basics
 
 # Run ETL pipeline
-make run-spark CHAPTER=chapter_01 EXAMPLE=etl_census_dataframe
+make run-spark CHAPTER=chapter_01 EXAMPLE=05_etl_census_dataframe
 ```
 
 ## Key Concepts
@@ -154,7 +154,7 @@ seniors = seniors.withColumn("total", col("males") + col("females"))
 seniors.write.mode("overwrite").csv("output/seniors", header=True)
 ```
 
-See `etl_census_dataframe.py` for the complete working example.
+See `05_etl_census_dataframe.py` for the complete working example.
 
 ## Performance Considerations
 

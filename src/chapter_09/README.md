@@ -6,17 +6,17 @@ This chapter presents the fundamental data design patterns that underpin virtual
 
 | Example | Description | Key Concepts |
 | --- | --- | --- |
-| `design_patterns.py` | Six classic patterns on employee + movie data | map, filter, combineByKey, join, mapPartitions, monoid correctness |
-| `inverted_index.py` | Build a word→document index from text files | wholeTextFiles, flatMap, reduceByKey, groupByKey |
+| `01_design_patterns.py` | Six classic patterns on employee + movie data | map, filter, combineByKey, join, mapPartitions, monoid correctness |
+| `02_inverted_index.py` | Build a word→document index from text files | wholeTextFiles, flatMap, reduceByKey, groupByKey |
 
 ## Running Examples
 
 ```bash
 # Run all six classic design patterns
-make run-spark CHAPTER=chapter_09 EXAMPLE=design_patterns
+make run-spark CHAPTER=chapter_09 EXAMPLE=01_design_patterns
 
 # Run inverted index
-make run-spark CHAPTER=chapter_09 EXAMPLE=inverted_index
+make run-spark CHAPTER=chapter_09 EXAMPLE=02_inverted_index
 ```
 
 ## Key Concepts

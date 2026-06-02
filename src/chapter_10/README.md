@@ -6,21 +6,21 @@ This chapter introduces practical data design patterns used in production big da
 
 | Example | Description | Key Concepts |
 | --- | --- | --- |
-| `in_mapper_combining.py` | Character frequency: 3 approaches (basic, per-record, per-partition) | flatMap, defaultdict, mapPartitions, local aggregation |
-| `top_n_minmax.py` | Top-N with bounded heaps + MinMax via mapPartitions | heapq, mapPartitions, partition-level summarization |
-| `binning_and_sorting.py` | Multi-level binning with UDFs + sorting APIs | UDF, partitionBy, sortByKey, sort, orderBy |
+| `01_in_mapper_combining.py` | Character frequency: 3 approaches (basic, per-record, per-partition) | flatMap, defaultdict, mapPartitions, local aggregation |
+| `02_top_n_minmax.py` | Top-N with bounded heaps + MinMax via mapPartitions | heapq, mapPartitions, partition-level summarization |
+| `03_binning_and_sorting.py` | Multi-level binning with UDFs + sorting APIs | UDF, partitionBy, sortByKey, sort, orderBy |
 
 ## Running Examples
 
 ```bash
 # In-mapper combining (character frequency)
-make run-spark CHAPTER=chapter_10 EXAMPLE=in_mapper_combining
+make run-spark CHAPTER=chapter_10 EXAMPLE=01_in_mapper_combining
 
 # Top-N and MinMax
-make run-spark CHAPTER=chapter_10 EXAMPLE=top_n_minmax
+make run-spark CHAPTER=chapter_10 EXAMPLE=02_top_n_minmax
 
 # Binning and sorting
-make run-spark CHAPTER=chapter_10 EXAMPLE=binning_and_sorting
+make run-spark CHAPTER=chapter_10 EXAMPLE=03_binning_and_sorting
 ```
 
 ## Key Concepts

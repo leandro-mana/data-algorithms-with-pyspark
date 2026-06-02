@@ -6,17 +6,17 @@ This chapter covers two ranking algorithms: **Rank Product** (used in bioinforma
 
 | Example | Description | Key Concepts |
 | --- | --- | --- |
-| `rank_product.py` | Rank genes across multiple studies using geometric mean of ranks | `combineByKey()`, `zipWithIndex()`, `union()`, NamedTuples |
-| `pagerank.py` | Compute node importance in a directed graph via iterative rank propagation | `groupByKey()`, `join()`, `flatMap()`, `reduceByKey()`, damping factor |
+| `01_rank_product.py` | Rank genes across multiple studies using geometric mean of ranks | `combineByKey()`, `zipWithIndex()`, `union()`, NamedTuples |
+| `02_pagerank.py` | Compute node importance in a directed graph via iterative rank propagation | `groupByKey()`, `join()`, `flatMap()`, `reduceByKey()`, damping factor |
 
 ## Running Examples
 
 ```bash
 # Run rank product (3 gene studies)
-make run-spark CHAPTER=chapter_08 EXAMPLE=rank_product
+make run-spark CHAPTER=chapter_08 EXAMPLE=01_rank_product
 
 # Run PageRank (web graph)
-make run-spark CHAPTER=chapter_08 EXAMPLE=pagerank
+make run-spark CHAPTER=chapter_08 EXAMPLE=02_pagerank
 ```
 
 ## Key Concepts

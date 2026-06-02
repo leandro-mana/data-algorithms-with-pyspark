@@ -6,17 +6,17 @@ This chapter covers how Spark reads data from and writes data to external storag
 
 | Example | Description | Key Concepts |
 | --- | --- | --- |
-| `csv_json_operations.py` | Read/write CSV and JSON with schema handling | Headers, inferSchema, explicit StructType, JSON arrays, SQL views |
-| `parquet_operations.py` | Read/write Parquet with analytics optimizations | Column pruning, predicate pushdown, partitioning, SQL on Parquet |
+| `01_csv_json_operations.py` | Read/write CSV and JSON with schema handling | Headers, inferSchema, explicit StructType, JSON arrays, SQL views |
+| `02_parquet_operations.py` | Read/write Parquet with analytics optimizations | Column pruning, predicate pushdown, partitioning, SQL on Parquet |
 
 ## Running Examples
 
 ```bash
 # Run CSV and JSON operations
-make run-spark CHAPTER=chapter_07 EXAMPLE=csv_json_operations
+make run-spark CHAPTER=chapter_07 EXAMPLE=01_csv_json_operations
 
 # Run Parquet operations
-make run-spark CHAPTER=chapter_07 EXAMPLE=parquet_operations
+make run-spark CHAPTER=chapter_07 EXAMPLE=02_parquet_operations
 ```
 
 ## Key Concepts

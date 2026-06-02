@@ -6,20 +6,20 @@ This chapter introduces graph-based data structures and demonstrates how to buil
 
 | Example | Description | Key Concepts |
 | --- | --- | --- |
-| `graph_basics.py` | Build a social network graph, compute degrees, find paths and triangles | Vertices/edges as DataFrames, self-joins, degree metrics |
-| `flight_analysis.py` | Real-world graph queries on airline data (airports + flights) | Route analysis, connecting flights via 2-hop joins |
+| `01_graph_basics.py` | Build a social network graph, compute degrees, find paths and triangles | Vertices/edges as DataFrames, self-joins, degree metrics |
+| `02_flight_analysis.py` | Real-world graph queries on airline data (airports + flights) | Route analysis, connecting flights via 2-hop joins |
 
 ## Running Examples
 
 ```bash
 # Run graph basics (social network analysis)
-make run-spark CHAPTER=chapter_06 EXAMPLE=graph_basics
+make run-spark CHAPTER=chapter_06 EXAMPLE=01_graph_basics
 
 # Run flight analysis with sample data
-make run-spark CHAPTER=chapter_06 EXAMPLE=flight_analysis
+make run-spark CHAPTER=chapter_06 EXAMPLE=02_flight_analysis
 
 # Run flight analysis with custom data files
-make run-spark CHAPTER=chapter_06 EXAMPLE=flight_analysis \
+make run-spark CHAPTER=chapter_06 EXAMPLE=02_flight_analysis \
     ARGS="/path/to/airports.csv /path/to/flights.csv"
 ```
 
