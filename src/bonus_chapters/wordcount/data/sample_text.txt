@@ -1,0 +1,24 @@
+Apache Spark is a fast and general engine for large scale data processing
+Spark provides an interface for programming entire clusters with implicit data parallelism
+The Spark core engine provides distributed task dispatching scheduling and basic IO functionalities
+Spark supports multiple programming languages including Python Java and Scala
+
+Data processing in Spark is built around the concept of resilient distributed datasets
+A resilient distributed dataset is a fault tolerant collection of elements that can be operated on in parallel
+Spark can create resilient distributed datasets from Hadoop input formats or by transforming other datasets
+Resilient distributed datasets support two types of operations transformations and actions
+
+Transformations create a new dataset from an existing one
+Actions return a value to the driver program after running a computation on the dataset
+All transformations in Spark are lazy meaning they do not compute their results right away
+Spark only computes transformations when an action requires a result to be returned to the driver program
+
+Spark supports many types of transformations including map flatMap filter reduceByKey and groupByKey
+The most common Spark transformation is the map transformation which applies a function to each element
+The flatMap transformation is similar to map but each input item can be mapped to zero or more output items
+The filter transformation returns a new dataset formed by selecting those elements of the source on which a function returns true
+
+Data algorithms with Spark allow developers to build fast and scalable data processing pipelines
+Spark makes it easy to write programs that process large amounts of data in parallel
+The key to writing efficient Spark programs is understanding how data is distributed across the cluster
+Understanding partitioning and data locality is essential for writing high performance Spark programs
